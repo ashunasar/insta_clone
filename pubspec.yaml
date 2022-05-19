@@ -1,0 +1,57 @@
+name: insta_clone
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  dio: ^4.0.6
+  flutter_svg: ^1.0.3
+  fluttertoast: ^8.0.9
+  google_fonts: ^2.3.2
+  intl: ^0.17.0
+  logger: ^1.1.0
+  get: ^4.6.3
+  shared_preferences: ^2.0.15
+  cached_network_image: ^3.2.0
+  cupertino_icons: ^1.0.4
+  flutter_screenutil: ^5.5.2
+  equatable: ^2.0.3
+  connectivity_plus: ^2.3.0
+  flutter_svg_provider: ^1.0.3
+  visibility_detector: ^0.3.3
+  palette_generator: ^0.3.3
+  json_annotation: ^4.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.1.11
+  flutter_gen_runner:
+  flutter_lints: ^1.0.0
+  json_serializable: ^6.2.0
+
+flutter_gen:
+  integrations:
+    flutter_svg: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+  fonts:
+    - family: candy
+      fonts:
+        - asset: assets/fonts/candy/candy.otf
+    - family: greatVibes
+      fonts:
+        - asset: assets/fonts/great_vibes/great_vibes_regular.ttf
