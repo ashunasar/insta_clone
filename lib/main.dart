@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
 
           Get.lazyPut(() => InternetConnectionCheckerController());
 
-          // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual);
+          SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
         },
         translations: Messages(),
         locale: UtilFunctions.getLocale(),
@@ -61,61 +62,65 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: TextTheme(
             headline1: GoogleFonts.lexend(
-                fontSize: 97,
+                fontSize: 97.sp,
                 fontWeight: FontWeight.w300,
                 letterSpacing: -1.5,
                 color: Colors.red),
             headline2: GoogleFonts.lexend(
-                fontSize: 61,
+                fontSize: 61.sp,
                 fontWeight: FontWeight.w300,
                 letterSpacing: -0.5,
                 color: Colors.red),
             headline3: GoogleFonts.lexend(
-                fontSize: 48, fontWeight: FontWeight.w400, color: Colors.red),
+                fontSize: 48.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.red),
             headline4: GoogleFonts.lexend(
-                fontSize: 34,
+                fontSize: 34.sp,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.25,
                 color: Colors.red),
             headline5: GoogleFonts.lexend(
-                fontSize: 24, fontWeight: FontWeight.w400, color: Colors.red),
+                fontSize: 24.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.white),
             headline6: GoogleFonts.lexend(
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
                 letterSpacing: 0.15,
                 color: Colors.red),
             subtitle1: GoogleFonts.lexend(
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.bold,
               letterSpacing: 0.15,
             ),
             subtitle2: GoogleFonts.lexend(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
                 letterSpacing: 0.1,
                 color: Colors.red),
             bodyText1: GoogleFonts.lexend(
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.5,
                 color: Colors.red),
             bodyText2: GoogleFonts.lexend(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.25,
                 color: Colors.white),
             button: GoogleFonts.lexend(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
                 letterSpacing: 1.25,
                 color: Colors.red),
             caption: GoogleFonts.lexend(
-                fontSize: 12,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.4,
                 color: const Color(0xff969696)),
             overline: GoogleFonts.lexend(
-                fontSize: 10,
+                fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 1.5,
                 color: Colors.red),
@@ -124,10 +129,8 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeService().getThemeMode(),
         home: InternetConnectionChecker(child: SplashScreen()),
         getPages: [
-          GetPage(
-              name: '/home_screen',
-              page: () => HomeScreen(),
-              transition: Transition.rightToLeftWithFade,
+          GetPage(name: '/home_screen', page: () => HomeScreen(),
+              // transition: Transition.rightToLeftWithFade,
               middlewares: [AuthMiddleware()]),
           // GetPage(
           //     name: '/comment_screen',

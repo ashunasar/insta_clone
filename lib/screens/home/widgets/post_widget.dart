@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ import '../../../enums/post_actions.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../models/home/post.dart';
 import 'post_action.dart';
+import 'share_widget.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget({
@@ -22,38 +24,46 @@ class PostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
-        tag: post.pId,
-        init: PostController(post: post),
-        builder: (PostController postController) {
-          return VisibilityDetector(
-            key: Key(postController.post.pId),
-            onVisibilityChanged: (visibilityInfo) {
-              var visiblePercentage = visibilityInfo.visibleFraction * 100;
-              if (visiblePercentage < 30) {
-                postController.changePostAction(val: false);
-              }
-            },
-            child: InkWell(
-              onTap: () {
-                postController.changePostAction();
+    return Padding(
+      padding: EdgeInsets.only(bottom: 27.h),
+      child: GetBuilder(
+          tag: post.pId,
+          init: PostController(post: post),
+          builder: (PostController postController) {
+            return VisibilityDetector(
+              key: Key(postController.post.pId),
+              onVisibilityChanged: (visibilityInfo) {
+                var visiblePercentage = visibilityInfo.visibleFraction * 100;
+                if (visiblePercentage < 30) {
+                  postController.changePostAction(val: false);
+                }
               },
-              onDoubleTap: () {
-                postController.postLikingAction();
-              },
-              child: Container(
-                height: 510.h,
-                width: 380,
-                margin: EdgeInsets.only(bottom: 27.h),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(postController.post.pImage),
-                  ),
-                  borderRadius: BorderRadius.circular(30.h),
-                ),
+              child: InkWell(
+                onTap: () {
+                  postController.changePostAction();
+                },
+                onDoubleTap: () {
+                  postController.postLikingAction();
+                },
+                onLongPress: () {
+                  Get.bottomSheet(
+                      ShareBottomSheet(postController: postController));
+                },
                 child: Stack(
                   children: [
+                    Container(
+                      height: 510.h,
+                      width: 380.w,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30.h),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: Image.network(
+                        postController.post.pImage,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                     Positioned(
                         left: 137.w,
                         top: 209.h,
@@ -76,9 +86,9 @@ class PostWidget extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          );
-        });
+            );
+          }),
+    );
   }
 
   Widget getPostCaption(PostController postController) {
@@ -110,8 +120,11 @@ class PostWidget extends StatelessWidget {
               Row(children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12.5.r),
-                  child: Image.asset(
-                    postController.post.profilePic,
+                  child: CachedNetworkImage(
+                    imageUrl: postController.post.profilePic,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) =>
+                            const CircularProgressIndicator(),
                     height: 25.h,
                     width: 25.w,
                   ),
@@ -140,6 +153,7 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget getPostAction(PostController postController) {
+    ThemeData theme = Get.theme;
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 100),
       left: postController.isPostActionOpned ? 285.w : 500.w,
@@ -178,8 +192,144 @@ class PostWidget extends StatelessWidget {
                     transition: Transition.rightToLeftWithFade);
               }),
           PostAction(icon: PostActionIcon.save),
-          PostAction(icon: PostActionIcon.share),
+          PostAction(
+              icon: PostActionIcon.share,
+              onTap: () {
+                Get.bottomSheet(
+                    ShareBottomSheet(postController: postController));
+              }),
         ]),
+      ),
+    );
+  }
+}
+
+class ShareBottomSheet extends StatelessWidget {
+  const ShareBottomSheet({
+    Key? key,
+    required this.postController,
+  }) : super(key: key);
+
+  final PostController postController;
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+    return Container(
+      margin: EdgeInsets.only(left: 6.w, right: 6.w, bottom: 7.w),
+      padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 11.h),
+      height: 371.h,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.white),
+        borderRadius: BorderRadius.circular(30.r),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xffFFFBFB).withOpacity(0.5),
+            Color(0xffFFFBFB).withOpacity(0),
+          ],
+        ),
+        boxShadow: [
+          BoxShadow(
+              offset: const Offset(0, 0),
+              color: const Color(0xffffffff).withOpacity(0.25),
+              blurRadius: 24.r,
+              // spreadRadius: 5.r,
+              blurStyle: BlurStyle.inner)
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Share', style: theme.textTheme.headline5),
+          SizedBox(height: 12.h),
+          Container(
+            height: 45.h,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(7.r),
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                isDense: true,
+                border: InputBorder.none,
+                hintText: 'Search...',
+                hintStyle: TextStyle(
+                    color: Color(0xff969696), fontWeight: FontWeight.w100),
+                contentPadding: EdgeInsets.only(left: 28.w, top: 13.h),
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Assets.icons.searchIconGradient.svg(),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 16.h),
+          Wrap(
+            spacing: 19.w,
+            runSpacing: 16.h,
+            children: [
+              ShareWidget(
+                  imagePath: 'assets/images/share_1.png',
+                  name: 'Gourav',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_2.png',
+                  name: 'Sandeep',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_3.png',
+                  name: 'Sagar',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_4.png',
+                  name: 'Abhishek',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_5.png',
+                  name: 'Arunima',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_6.png',
+                  name: 'Rahul',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_7.png',
+                  name: 'Sami',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_8.png',
+                  name: 'Siddhart',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_9.png',
+                  name: 'Vaihav',
+                  postController: postController),
+              ShareWidget(
+                  imagePath: 'assets/images/share_10.png',
+                  name: 'Ayesha',
+                  postController: postController),
+            ],
+          ),
+          Spacer(),
+          Align(
+            alignment: Alignment.center,
+            child: ElevatedButton(
+              onPressed: () {
+                postController.sharePost();
+              },
+              child: Text('Share',
+                  style:
+                      theme.textTheme.caption!.copyWith(color: Colors.white)),
+              style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size(108.w, 35.h)),
+                backgroundColor: MaterialStateProperty.all(Color(0xff6B5ECD)),
+              ),
+            ),
+          ),
+          Spacer()
+        ],
       ),
     );
   }

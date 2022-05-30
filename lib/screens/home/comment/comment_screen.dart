@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -51,8 +52,12 @@ class CommentScreen extends StatelessWidget {
                           child: Column(children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(30.r),
-                              child: Image.asset(
-                                postController.post.pImage,
+                              child: CachedNetworkImage(
+                                imageUrl: postController.post.pImage,
+                                progressIndicatorBuilder:
+                                    (context, url, downloadProgress) =>
+                                        const Center(
+                                            child: CircularProgressIndicator()),
                                 width: 310.w,
                                 height: 359.h,
                                 fit: BoxFit.cover,
@@ -131,7 +136,8 @@ class Bottom extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomCircleAvatar(
-                    bgColor: postController.paletteGenerator!.colors.last,
+                    bgColor: postController.paletteGenerator?.colors.last ??
+                        const Color(0xffE9EDF1),
                     avatar: postController.post.avatar,
                     width: 25.w,
                     radius: 12.5.r,

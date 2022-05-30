@@ -37,6 +37,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home_icon.svg
   SvgGenImage get homeIcon => const SvgGenImage('assets/icons/home_icon.svg');
 
+  /// File path: assets/icons/logo.svg
+  SvgGenImage get logo => const SvgGenImage('assets/icons/logo.svg');
+
   /// File path: assets/icons/message_icon.svg
   SvgGenImage get messageIcon =>
       const SvgGenImage('assets/icons/message_icon.svg');
@@ -56,6 +59,10 @@ class $AssetsIconsGen {
   SvgGenImage get searchIcon =>
       const SvgGenImage('assets/icons/search_icon.svg');
 
+  /// File path: assets/icons/search_icon_gradient.svg
+  SvgGenImage get searchIconGradient =>
+      const SvgGenImage('assets/icons/search_icon_gradient.svg');
+
   /// File path: assets/icons/share_icon.svg
   SvgGenImage get shareIcon => const SvgGenImage('assets/icons/share_icon.svg');
 
@@ -74,6 +81,10 @@ class $AssetsIconsGen {
   SvgGenImage get storyBorder =>
       const SvgGenImage('assets/icons/story_border.svg');
 
+  /// File path: assets/icons/story_share.svg
+  SvgGenImage get storyShare =>
+      const SvgGenImage('assets/icons/story_share.svg');
+
   /// File path: assets/icons/user_icon.svg
   SvgGenImage get userIcon => const SvgGenImage('assets/icons/user_icon.svg');
 }
@@ -84,9 +95,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/background_post_action.png
   AssetGenImage get backgroundPostAction =>
       const AssetGenImage('assets/images/background_post_action.png');
-
-  /// File path: assets/images/boy.jpeg
-  AssetGenImage get boy => const AssetGenImage('assets/images/boy.jpeg');
 
   /// File path: assets/images/female metis t shirt pose  sunglasses.png
   AssetGenImage get femaleMetisTShirtPoseSunglasses => const AssetGenImage(
@@ -117,6 +125,37 @@ class $AssetsImagesGen {
   /// File path: assets/images/profile_pic.jpeg
   AssetGenImage get profilePic =>
       const AssetGenImage('assets/images/profile_pic.jpeg');
+
+  /// File path: assets/images/share_1.png
+  AssetGenImage get share1 => const AssetGenImage('assets/images/share_1.png');
+
+  /// File path: assets/images/share_10.png
+  AssetGenImage get share10 =>
+      const AssetGenImage('assets/images/share_10.png');
+
+  /// File path: assets/images/share_2.png
+  AssetGenImage get share2 => const AssetGenImage('assets/images/share_2.png');
+
+  /// File path: assets/images/share_3.png
+  AssetGenImage get share3 => const AssetGenImage('assets/images/share_3.png');
+
+  /// File path: assets/images/share_4.png
+  AssetGenImage get share4 => const AssetGenImage('assets/images/share_4.png');
+
+  /// File path: assets/images/share_5.png
+  AssetGenImage get share5 => const AssetGenImage('assets/images/share_5.png');
+
+  /// File path: assets/images/share_6.png
+  AssetGenImage get share6 => const AssetGenImage('assets/images/share_6.png');
+
+  /// File path: assets/images/share_7.png
+  AssetGenImage get share7 => const AssetGenImage('assets/images/share_7.png');
+
+  /// File path: assets/images/share_8.png
+  AssetGenImage get share8 => const AssetGenImage('assets/images/share_8.png');
+
+  /// File path: assets/images/share_9.png
+  AssetGenImage get share9 => const AssetGenImage('assets/images/share_9.png');
 }
 
 class Assets {

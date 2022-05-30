@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:insta_clone/models/home/comment.dart';
@@ -44,7 +45,7 @@ class PostController extends GetxController {
 
   PaletteGenerator? paletteGenerator;
   Future<void> updatePaletteGenerator(
-    image,
+    ImageProvider image,
   ) async {
     paletteGenerator = await PaletteGenerator.fromImageProvider(
       image,
@@ -81,13 +82,28 @@ class PostController extends GetxController {
         userFullName: post.userFullName,
         comment: commentController.text));
     commentController.clear();
-    print(post.comments.last.toJson());
     update();
   }
 
   @override
   void onInit() {
-    updatePaletteGenerator(AssetImage(post.pImage));
+    updatePaletteGenerator(
+        CachedNetworkImageProvider(post.pImage, maxHeight: 510, maxWidth: 380));
     super.onInit();
+  }
+
+  List<String> selectedUsers = [];
+
+  void addSelectedUser(String name) {
+    selectedUsers.add(name);
+    update();
+  }
+
+  void sharePost() {
+    Get.back();
+    Get.snackbar('Message', 'Post has been shared to selected users',
+        snackPosition: SnackPosition.BOTTOM, colorText: Colors.white);
+    selectedUsers.clear();
+    update();
   }
 }
