@@ -12,7 +12,7 @@ class StoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => const StoryScreen(),
+        Get.to(() => StoryScreen(),
             duration: const Duration(milliseconds: 800),
             transition: Transition.cupertinoDialog,
             fullscreenDialog: true);

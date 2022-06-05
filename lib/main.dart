@@ -30,7 +30,7 @@ void main() async {
   } else {
     //TODO: change base url for debug mode
 
-    Global.baseurl = "http://192.168.29.149:3000";
+    Global.baseurl = "http://192.168.0.106:3000";
   }
 
   runApp(const MyApp());

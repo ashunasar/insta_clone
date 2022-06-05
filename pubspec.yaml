@@ -30,6 +30,7 @@ dependencies:
   visibility_detector: ^0.3.3
   palette_generator: ^0.3.3
   json_annotation: ^4.5.0
+  tiktoklikescroller: ^0.2.0
 
 dev_dependencies:
   flutter_test:
