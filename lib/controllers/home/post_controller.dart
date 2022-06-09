@@ -54,7 +54,6 @@ class PostController extends GetxController {
     update();
   }
 
-  // Color pickedColor = const Color.fromRGBO(255, 241, 240, 1);
   Color pickedColor = const Color(0xff07BBDF);
 
   Color get backgroundColor {

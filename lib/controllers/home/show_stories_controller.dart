@@ -14,6 +14,7 @@ class ShowStoriesController extends GetxController {
 
   @override
   void onInit() {
+    storyScreenController.resetAll(userStories.first);
     storiesController.addListener(() {
       updateCurrentPageValue(storiesController.page!.toInt());
     });

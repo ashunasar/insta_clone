@@ -10,8 +10,6 @@ import '../../utils/app_logger.dart';
 import 'show_stories_controller.dart';
 
 class StoryScreenController extends GetxController {
-  // ShowStoriesController showStoriesController;
-  // StoryScreenController({required this.showStoriesController});
   Controller? scrollController = Controller();
   Timer? storyTimer;
   int storyTicker = 0;
@@ -21,12 +19,6 @@ class StoryScreenController extends GetxController {
   int currentPosition = 0;
   UserStory? currentUserStory;
 
-  @override
-  void onInit() {
-    // startTimer();
-    super.onInit();
-  }
-
   void handleCallbackEvents(ScrollEvent event) async {
     if (currentPosition == 0 && event.direction == ScrollDirection.BACKWARDS) {
       preStory();
@@ -34,7 +26,6 @@ class StoryScreenController extends GetxController {
       resetTimer();
     } else if (event.success == ScrollSuccess.FAILED_END_OF_LIST) {
       AppLogger.print('end of list bro');
-
       nextStory();
     }
     currentPosition = scrollController?.getScrollPosition() ?? 0;
@@ -85,9 +76,6 @@ class StoryScreenController extends GetxController {
   }
 
   void resetTimer() {
-    // storyTicker = 0;
-    // storyTimer?.cancel();
-    // resumedOn = 0;
     resetTime();
     startTimer();
   }
