@@ -59,9 +59,11 @@ class PostWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.h),
                       ),
                       clipBehavior: Clip.antiAlias,
-                      child: Image.network(
-                        postController.post.pImage,
+                      child: CachedNetworkImage(
+                        imageUrl: postController.post.pImage,
                         fit: BoxFit.cover,
+                        placeholder: (BuildContext contexdt, String s) =>
+                            Center(child: CircularProgressIndicator()),
                       ),
                     ),
                     Positioned(

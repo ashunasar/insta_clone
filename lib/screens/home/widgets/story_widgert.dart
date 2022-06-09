@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:insta_clone/screens/home/story/story_screen.dart';
 
+import '../show_stories/show_stories_screen.dart';
+
 class StoryWidget extends StatelessWidget {
   const StoryWidget({required this.imagePath, Key? key}) : super(key: key);
   final String imagePath;
@@ -12,10 +14,20 @@ class StoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => StoryScreen(),
-            duration: const Duration(milliseconds: 800),
-            transition: Transition.cupertinoDialog,
-            fullscreenDialog: true);
+        // Get.to(
+        //   () => StoryScreen(
+        //     id: '23434',
+        //   ),
+        //   duration: const Duration(milliseconds: 800),
+        //   transition: Transition.cupertinoDialog,
+        //   fullscreenDialog: true,
+        // );
+        Get.to(
+          () => ShowStoriesScreen(),
+          duration: const Duration(milliseconds: 800),
+          transition: Transition.cupertinoDialog,
+          fullscreenDialog: true,
+        );
       },
       child: Container(
           height: 60.h,

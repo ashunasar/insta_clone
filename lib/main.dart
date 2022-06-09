@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'controllers/connection/internet_connection_checker_controller.dart';
+import 'controllers/home/show_stories_controller.dart';
 import 'controllers/internationalization/messages.dart';
-import 'controllers/theme/app_theme_data.dart';
 import 'controllers/theme/theme_service.dart';
 import 'middleware/auth_middleware.dart';
 import 'screens/home/home_screen.dart';
@@ -49,6 +49,9 @@ class MyApp extends StatelessWidget {
               permanent: true);
 
           Get.lazyPut(() => InternetConnectionCheckerController());
+          // Get.put<ShowStoriesController>(ShowStoriesController(),
+          //     permanent: true);
+          Get.lazyPut(() => ShowStoriesController());
 
           SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
         },

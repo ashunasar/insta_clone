@@ -5,6 +5,5 @@ enum PostActionIcon {
   comment,
   save,
   saveGradient,
-
   share
 }
