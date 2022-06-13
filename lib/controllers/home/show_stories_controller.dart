@@ -27,15 +27,18 @@ class ShowStoriesController extends GetxController {
       stories: [
         Story(
             sId: '1',
-            contentUrl: 'http://192.168.0.106:8000/image/story1.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1495430288918-03be19c7c485?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=2787&q=80',
             type: StoryType.image),
         Story(
             sId: '2',
-            contentUrl: 'http://192.168.0.106:8000/image/story2.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1505322022379-7c3353ee6291?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=1500&q=80',
             type: StoryType.image),
         Story(
             sId: '3',
-            contentUrl: 'http://192.168.0.106:8000/image/story3.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1532767153582-b1a0e5145009?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=2814&q=80',
             type: StoryType.image)
       ],
       userId: '',
@@ -46,15 +49,18 @@ class ShowStoriesController extends GetxController {
       stories: [
         Story(
             sId: '4',
-            contentUrl: 'http://192.168.0.106:8000/image/story4.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1654222182084-9128dbf0fa7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=2787&q=80',
             type: StoryType.image),
         Story(
             sId: '5',
-            contentUrl: 'http://192.168.0.106:8000/image/story5.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1638722238710-11aaf1794804?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=2787&q=80',
             type: StoryType.image),
         Story(
             sId: '6',
-            contentUrl: 'http://192.168.0.106:8000/image/story6.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1634295912158-9c847b6b3a40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=2787&q=80',
             type: StoryType.image)
       ],
       userId: '',
@@ -65,15 +71,18 @@ class ShowStoriesController extends GetxController {
       stories: [
         Story(
             sId: '7',
-            contentUrl: 'http://192.168.0.106:8000/image/story7.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1635333496622-1df7af1d392c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=2835&q=80',
             type: StoryType.image),
         Story(
             sId: '8',
-            contentUrl: 'http://192.168.0.106:8000/image/story8.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1637420989235-a84f81d3d077?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=3027&q=80',
             type: StoryType.image),
         Story(
             sId: '9',
-            contentUrl: 'http://192.168.0.106:8000/image/story9.jpeg',
+            contentUrl:
+                'https://images.unsplash.com/photo-1628067630818-fa3e19d96b27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=jpeg&fit=crop&w=2160&q=80',
             type: StoryType.image)
       ],
       userId: '',

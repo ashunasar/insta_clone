@@ -12,7 +12,7 @@ class AppLogger {
   );
 
 //* print function to print log messages
-  static void print(Object value) {
+  static void printLog(Object value) {
     if (!kReleaseMode) {
       _logger.d(value);
     }

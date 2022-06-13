@@ -41,14 +41,13 @@ class HomeScreenController extends GetxController {
       Get.back();
 
       //* logging error message
-      AppLogger.print(e.message);
+      AppLogger.printLog(e.message);
     }
   }
 
   String email = '';
   String userId = '';
   Future userData() async {
-    debugPrint('called this ');
     var res = await UserApi().userData();
     email = res.data['email'];
     userId = res.data['userId'];

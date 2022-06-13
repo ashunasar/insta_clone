@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wakelock/wakelock.dart';
 import 'controllers/connection/internet_connection_checker_controller.dart';
 import 'controllers/home/show_stories_controller.dart';
 import 'controllers/internationalization/messages.dart';
@@ -32,7 +33,7 @@ void main() async {
 
     Global.baseurl = "http://192.168.0.106:3000";
   }
-
+  Wakelock.enable();
   runApp(const MyApp());
 }
 
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
           //     permanent: true);
           Get.lazyPut(() => ShowStoriesController());
 
-          SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+          // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual);
         },
         translations: Messages(),
         locale: UtilFunctions.getLocale(),

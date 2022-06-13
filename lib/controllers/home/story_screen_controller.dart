@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/file.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get/get.dart';
 import 'package:tiktoklikescroller/controller.dart';
 import 'package:tiktoklikescroller/types.dart';
@@ -18,14 +20,19 @@ class StoryScreenController extends GetxController {
   int resumedOn = 0;
   int currentPosition = 0;
   UserStory? currentUserStory;
+  File? currentStoryFile;
+  RxBool canStartTimer = false.obs;
 
   void handleCallbackEvents(ScrollEvent event) async {
     if (currentPosition == 0 && event.direction == ScrollDirection.BACKWARDS) {
       preStory();
     } else if (event.success == ScrollSuccess.SUCCESS) {
-      resetTimer();
+      removeCurrentFile();
+      if (canStartTimer.value) {
+        canStartTimer.toggle();
+      }
     } else if (event.success == ScrollSuccess.FAILED_END_OF_LIST) {
-      AppLogger.print('end of list bro');
+      AppLogger.printLog('end of list bro');
       nextStory();
     }
     currentPosition = scrollController?.getScrollPosition() ?? 0;
@@ -33,36 +40,35 @@ class StoryScreenController extends GetxController {
   }
 
   void startTimer({bool isResumed = false}) {
-    if (isResumed) {
-      resumedOn = storyTicker;
-    } else {
-      storyTicker = 0;
-    }
-
-    storyTimer =
-        Timer.periodic(Duration(milliseconds: tickerDuration), (_) async {
-      if (_.tick > (isResumed ? (storyDuration - resumedOn) : storyDuration)) {
-        _.cancel();
-
-        if (currentPosition < currentUserStory!.stories.length - 1) {
-          if (currentUserStory != null) {
-            await cacheImageSingle(
-                currentUserStory!.stories[currentPosition + 1]);
-          }
-          scrollController?.animateToPosition(currentPosition + 1);
-        } else if (currentPosition == currentUserStory!.stories.length - 1) {
-          AppLogger.print('timer to push new screen');
-          nextStory();
-        }
-        return;
-      }
+    if (canStartTimer.value) {
       if (isResumed) {
-        storyTicker = resumedOn + _.tick;
+        resumedOn = storyTicker;
       } else {
-        storyTicker = _.tick;
+        storyTicker = 0;
       }
-      update();
-    });
+
+      storyTimer =
+          Timer.periodic(Duration(milliseconds: tickerDuration), (_) async {
+        if (_.tick >
+            (isResumed ? (storyDuration - resumedOn) : storyDuration)) {
+          _.cancel();
+
+          if (currentPosition < currentUserStory!.stories.length - 1) {
+            scrollController?.animateToPosition(currentPosition + 1);
+          } else if (currentPosition == currentUserStory!.stories.length - 1) {
+            AppLogger.printLog('timer to push new screen');
+            nextStory();
+          }
+          return;
+        }
+        if (isResumed) {
+          storyTicker = resumedOn + _.tick;
+        } else {
+          storyTicker = _.tick;
+        }
+        update();
+      });
+    }
   }
 
   void resetTime() {
@@ -85,24 +91,25 @@ class StoryScreenController extends GetxController {
   }
 
   Future<void> nextStory() async {
+    removeCurrentFile();
     resetTime();
     try {
       ShowStoriesController showStoriesController =
           Get.find<ShowStoriesController>();
-      showStoriesController.storiesController.nextPage(
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeInCirc);
-
       await showStoriesController.storyScreenController.resetAll(
           showStoriesController
               .userStories[showStoriesController.currentPageValue + 1]);
+      showStoriesController.storiesController.nextPage(
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.easeInCirc);
     } catch (e) {
-      AppLogger.print(e);
+      AppLogger.printLog(e);
       Get.back();
     }
   }
 
   Future<void> preStory() async {
+    removeCurrentFile();
     resetTime();
     ShowStoriesController showStoriesController =
         Get.find<ShowStoriesController>();
@@ -115,32 +122,26 @@ class StoryScreenController extends GetxController {
           duration: const Duration(milliseconds: 100),
           curve: Curves.easeInCirc);
     } catch (e) {
-      AppLogger.print(e);
+      AppLogger.printLog(e);
       Get.back();
     }
   }
 
-  // Future<void> cacheImage(UserStory userStory) async {
-  //   for (Story i in userStory.stories) {
-  //     await precacheImage(NetworkImage(i.contentUrl), Get.context!);
-  //   }
-  // }
-
   Future<void> cacheImageSingle(Story story) async {
-    await precacheImage(NetworkImage(story.contentUrl), Get.context!);
+    if (canStartTimer.value) {
+      canStartTimer.toggle();
+    }
+    currentStoryFile =
+        await DefaultCacheManager().getSingleFile(story.contentUrl);
+    canStartTimer.toggle();
   }
 
   Future<void> resetAll(UserStory userStory) async {
-    // await cacheImage(userStory);
     removeCurrentUserStory();
-
     currentUserStory = userStory;
-    await cacheImageSingle(currentUserStory!.stories.first);
     scrollController = Controller();
     scrollController?.addListener(handleCallbackEvents);
-    resetTime();
     update();
-    startTimer();
   }
 
   void removeCurrentUserStory() {
@@ -153,6 +154,11 @@ class StoryScreenController extends GetxController {
     resumedOn = 0;
     currentPosition = 0;
 
+    update();
+  }
+
+  void removeCurrentFile() {
+    currentStoryFile = null;
     update();
   }
 

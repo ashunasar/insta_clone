@@ -105,13 +105,13 @@ class ApiService {
           options.headers["Authorization"] = "Bearer $token";
         }
       } catch (e) {
-        AppLogger.print(e);
+        AppLogger.printLog(e);
       }
 
       return handler.next(options);
     }, onResponse: (response, handler) {
       //* logging response values in console
-      AppLogger.print(""
+      AppLogger.printLog(""
           "Base url is : ${response.requestOptions.baseUrl} path is ${response.requestOptions.path}\n"
           "Status code is: ${response.statusCode}\n"
           "Status message is: ${response.statusMessage}\n"
@@ -124,14 +124,14 @@ class ApiService {
       return handler.next(response);
     }, onError: (DioError dioError, handler) async {
       //* logging error in console
-      AppLogger.print(dioError);
+      AppLogger.printLog(dioError);
 
       late String message;
 
       message = "";
       if (dioError.type == DioErrorType.response) {
         final data = dioError.response!.data;
-        AppLogger.print(data);
+        AppLogger.printLog(data);
 
         //! conditions to handel error according to it's type
 
@@ -150,7 +150,6 @@ class ApiService {
             );
 
             if (res.statusCode == 201) {
-              AppLogger.print(res);
               String accessToken = res.data['accessToken'];
               String refreshToken = res.data['refreshToken'];
               Preference.setString(Constants.ACCESS_TOKEN, accessToken);
@@ -162,7 +161,7 @@ class ApiService {
                     await DioConnectivityRequestRetrier(dio: _dio)
                         .scheduleRequestRetry(dioError.requestOptions));
               } catch (e) {
-                print(e);
+                AppLogger.printLog(e);
               }
             } else if (res.statusCode == 401) {
               Preference.clear();
@@ -205,7 +204,7 @@ class ApiService {
           return handler.resolve(await DioConnectivityRequestRetrier(dio: _dio)
               .scheduleRequestRetry(dioError.requestOptions));
         } catch (e) {
-          print(e);
+          AppLogger.printLog(e);
         }
       }
 

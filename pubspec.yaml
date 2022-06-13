@@ -31,6 +31,8 @@ dependencies:
   palette_generator: ^0.3.3
   json_annotation: ^4.5.0
   tiktoklikescroller: ^0.2.0
+  flutter_cache_manager: ^3.3.0
+  wakelock: ^0.6.1+2
 
 dev_dependencies:
   flutter_test:
