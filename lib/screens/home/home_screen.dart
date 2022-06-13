@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,9 +10,7 @@ import 'widgets/post_widget.dart';
 import 'widgets/story_widgert.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
-  // final HomeScreenController controller = Get.put(HomeScreenController());
-  // final PostController postController = Get.put(PostController());
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +34,11 @@ class HomeScreen extends StatelessWidget {
                         const Spacer(),
                         Text(
                           'Neotric Vibes',
-                          // style: TextStyle(
-                          //   color: Colors.black,
-                          //   fontSize: 30.sp,
-                          //   fontFamily: FontFamily.greatVibes,
-                          //   fontWeight: FontWeight.bold,
-                          // ),
                           style: GoogleFonts.satisfy(
                             textStyle: TextStyle(
                               color: Colors.black,
                               fontSize: 30.sp,
                               letterSpacing: 2,
-                              // fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),

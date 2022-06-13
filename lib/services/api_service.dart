@@ -100,7 +100,7 @@ class ApiService {
     _dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
       //* setting Authorization header if token found
       try {
-        final token = Preference.getString(Constants.ACCESS_TOKEN);
+        final token = Preference.getString(Constants.accessToken);
         if (token != null) {
           options.headers["Authorization"] = "Bearer $token";
         }
@@ -139,7 +139,7 @@ class ApiService {
           message = "Some error occured";
         } else if (dioError.response!.statusCode == 401) {
           // if (!message.toLowerCase().contains("otp")) {
-          final refreshToken = Preference.getString(Constants.REFRESH_TOKEN);
+          final refreshToken = Preference.getString(Constants.refreshToken);
           if (data['error']['message'] == "jwt expired" &&
               refreshToken != null) {
             var res = await _dio.post(
@@ -152,8 +152,8 @@ class ApiService {
             if (res.statusCode == 201) {
               String accessToken = res.data['accessToken'];
               String refreshToken = res.data['refreshToken'];
-              Preference.setString(Constants.ACCESS_TOKEN, accessToken);
-              Preference.setString(Constants.REFRESH_TOKEN, refreshToken);
+              Preference.setString(Constants.accessToken, accessToken);
+              Preference.setString(Constants.refreshToken, refreshToken);
               options.headers["Authorization"] = "Bearer $accessToken";
               try {
                 //! retry for dio request if SocketException found

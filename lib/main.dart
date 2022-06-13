@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,11 +49,7 @@ class MyApp extends StatelessWidget {
               permanent: true);
 
           Get.lazyPut(() => InternetConnectionCheckerController());
-          // Get.put<ShowStoriesController>(ShowStoriesController(),
-          //     permanent: true);
           Get.lazyPut(() => ShowStoriesController());
-
-          // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual);
         },
         translations: Messages(),
         locale: UtilFunctions.getLocale(),

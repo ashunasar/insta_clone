@@ -155,7 +155,6 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget getPostAction(PostController postController) {
-    ThemeData theme = Get.theme;
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 100),
       left: postController.isPostActionOpned ? 285.w : 500.w,
