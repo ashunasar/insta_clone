@@ -21,16 +21,11 @@ void main() async {
   await Preference.load();
 
   if (kReleaseMode) {
-    //TODO: change base url for release mode
     Global.baseurl = "https://reqres.in/";
   } else if (kProfileMode) {
-    //TODO: change base url for profile mode
-
     Global.baseurl = "https://reqres.in/";
   } else {
-    //TODO: change base url for debug mode
-
-    Global.baseurl = "http://192.168.0.106:3000";
+    Global.baseurl = "http://192.168.0.102:3000";
   }
   Wakelock.enable();
   runApp(const MyApp());

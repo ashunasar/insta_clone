@@ -16,6 +16,7 @@ Post _$PostFromJson(Map<String, dynamic> json) => Post(
       comments: (json['comments'] as List<dynamic>)
           .map((e) => Comment.fromJson(e as Map<String, dynamic>))
           .toList(),
+      bgColor: const ColorSerialiser().fromJson(json['bgColor'] as int),
     );
 
 Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
@@ -26,4 +27,5 @@ Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
       'pCaption': instance.pCaption,
       'avatar': instance.avatar,
       'comments': instance.comments,
+      'bgColor': const ColorSerialiser().toJson(instance.bgColor),
     };
