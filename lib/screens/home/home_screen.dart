@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:insta_clone/models/home/post.dart';
+import 'package:insta_clone/screens/profile/profile_screen.dart';
 import '../../controllers/home/home_screen_controller.dart';
 import '../../gen/assets.gen.dart';
 import '../../models/home/comment.dart';
@@ -216,20 +217,47 @@ class HomeScreen extends StatelessWidget {
                 margin: EdgeInsets.symmetric(vertical: 7.h, horizontal: 24.w),
                 color: Colors.transparent,
                 child: Container(
+                    width: 380.w,
                     height: 72.h,
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    // padding: EdgeInsets.symmetric(horizontal: 24.w),
                     decoration: BoxDecoration(
                       color: const Color(0xff000000).withOpacity(0.94),
                       borderRadius: BorderRadius.circular(30.r),
                     ),
+                    clipBehavior: Clip.antiAlias,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Assets.icons.homeIcon.svg(height: 24.h, width: 24.w),
-                        Assets.icons.searchIcon.svg(height: 24.h, width: 24.w),
-                        Assets.icons.notificationIcon
-                            .svg(height: 24.h, width: 24.w),
-                        Assets.icons.userIcon.svg(height: 24.h, width: 24.w)
+                        Container(
+                            height: 72.h,
+                            width: 95.w,
+                            alignment: Alignment.center,
+                            child: Assets.icons.homeIcon
+                                .svg(height: 24.h, width: 24.w)),
+                        Container(
+                            height: 72.h,
+                            width: 95.w,
+                            alignment: Alignment.center,
+                            child: Assets.icons.searchIcon
+                                .svg(height: 24.h, width: 24.w)),
+                        Container(
+                          height: 72.h,
+                          width: 95.w,
+                          alignment: Alignment.center,
+                          child: Assets.icons.notificationIcon
+                              .svg(height: 24.h, width: 24.w),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => ProfileScreen());
+                          },
+                          child: Container(
+                              height: 72.h,
+                              width: 95.w,
+                              alignment: Alignment.center,
+                              child: Assets.icons.userIcon
+                                  .svg(height: 24.h, width: 24.w)),
+                        )
                       ],
                     )),
               ),

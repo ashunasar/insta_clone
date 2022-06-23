@@ -12,12 +12,19 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/add_icon.svg
+  SvgGenImage get addIcon => const SvgGenImage('assets/icons/add_icon.svg');
+
   /// File path: assets/icons/add_post.svg
   SvgGenImage get addPost => const SvgGenImage('assets/icons/add_post.svg');
 
   /// File path: assets/icons/add_story_icon.svg
   SvgGenImage get addStoryIcon =>
       const SvgGenImage('assets/icons/add_story_icon.svg');
+
+  /// File path: assets/icons/add_story_without_gradient_bg.svg
+  SvgGenImage get addStoryWithoutGradientBg =>
+      const SvgGenImage('assets/icons/add_story_without_gradient_bg.svg');
 
   /// File path: assets/icons/arrow_back_gradient.svg
   SvgGenImage get arrowBackGradient =>
@@ -26,6 +33,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/comment_icon.svg
   SvgGenImage get commentIcon =>
       const SvgGenImage('assets/icons/comment_icon.svg');
+
+  /// File path: assets/icons/edit_icon.svg
+  SvgGenImage get editIcon => const SvgGenImage('assets/icons/edit_icon.svg');
 
   /// File path: assets/icons/hear_icon_gradient.svg
   SvgGenImage get hearIconGradient =>
@@ -63,6 +73,9 @@ class $AssetsIconsGen {
   SvgGenImage get searchIconGradient =>
       const SvgGenImage('assets/icons/search_icon_gradient.svg');
 
+  /// File path: assets/icons/setting.svg
+  SvgGenImage get setting => const SvgGenImage('assets/icons/setting.svg');
+
   /// File path: assets/icons/share_icon.svg
   SvgGenImage get shareIcon => const SvgGenImage('assets/icons/share_icon.svg');
 
@@ -87,6 +100,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/user_icon.svg
   SvgGenImage get userIcon => const SvgGenImage('assets/icons/user_icon.svg');
+
+  /// File path: assets/icons/view.svg
+  SvgGenImage get view => const SvgGenImage('assets/icons/view.svg');
 }
 
 class $AssetsImagesGen {
