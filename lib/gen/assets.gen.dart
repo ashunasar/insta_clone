@@ -76,6 +76,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/setting.svg
   SvgGenImage get setting => const SvgGenImage('assets/icons/setting.svg');
 
+  /// File path: assets/icons/setting_icon_gradient.svg
+  SvgGenImage get settingIconGradient =>
+      const SvgGenImage('assets/icons/setting_icon_gradient.svg');
+
   /// File path: assets/icons/share_icon.svg
   SvgGenImage get shareIcon => const SvgGenImage('assets/icons/share_icon.svg');
 
