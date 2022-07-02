@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../utils/app_logger.dart';
+import 'models/reels.dart';
+import 'models/teb_text.dart';
+import 'models/video.dart';
+
 class ProfileScreenController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late ScrollController scrollController = ScrollController();
@@ -12,11 +17,32 @@ class ProfileScreenController extends GetxController
   late TabText selectedTabText;
   late List<TabText> tabsText;
 
+  double profileContentheight = 0;
   void updateSelectedTabText(TabText e) {
     selectedTabText = e;
 
     pageController.animateToPage(e.position,
         duration: const Duration(milliseconds: 250), curve: Curves.easeIn);
+    setHeight(e);
+    update();
+  }
+
+  void setHeight(TabText e) {
+    if (e.type == TabType.photos) {
+      profileContentheight = 269.h + 11.h;
+      profileContentheight +=
+          (profileImages.length / 3).ceil() * (128.h + 11.h);
+    }
+    if (e.type == TabType.reels) {
+      profileContentheight = (reals.length / 2).ceil() * (270.h + 20.h);
+    }
+
+    if (e.type == TabType.videos) {
+      profileContentheight = (reals.length / 2).ceil() * (199.h + 20.h);
+    }
+    if (e.type == TabType.tags) {
+      profileContentheight = (tags.length / 3).ceil() * (128.h + 11.h);
+    }
     update();
   }
 
@@ -27,6 +53,102 @@ class ProfileScreenController extends GetxController
   double whiteBgPositionFromTopConst = 356.h;
   double whiteBgPositionFromTop = 356.h;
   bool showAppbar = false;
+
+  List<String> profileImagesImp = [
+    'http://192.168.0.100:8000/image/v1.jpeg',
+    'http://192.168.0.100:8000/image/v2.jpeg',
+    'http://192.168.0.100:8000/image/v3.jpeg'
+  ];
+  List<String> profileImages = [
+    'http://192.168.0.100:8000/image/v4.jpeg',
+    'http://192.168.0.100:8000/image/v5.jpeg',
+    'http://192.168.0.100:8000/image/v6.jpeg',
+    'http://192.168.0.100:8000/image/v7.jpeg',
+    'http://192.168.0.100:8000/image/v8.jpeg',
+    'http://192.168.0.100:8000/image/v9.jpeg',
+  ];
+
+  List<String> tags = [
+    'http://192.168.0.100:8000/image/v1.jpeg',
+    'http://192.168.0.100:8000/image/v2.jpeg',
+    'http://192.168.0.100:8000/image/v3.jpeg',
+    'http://192.168.0.100:8000/image/v4.jpeg',
+    'http://192.168.0.100:8000/image/v5.jpeg',
+    'http://192.168.0.100:8000/image/v6.jpeg',
+    'http://192.168.0.100:8000/image/v7.jpeg',
+    'http://192.168.0.100:8000/image/v8.jpeg',
+    'http://192.168.0.100:8000/image/v9.jpeg',
+  ];
+
+  List<Reel> reals = [
+    Reel(
+        id: '1',
+        viewsCount: '256K',
+        contentUrl: 'http://192.168.0.100:8000/image/v1.jpeg'),
+    Reel(
+        id: '1',
+        viewsCount: '220K',
+        contentUrl: 'http://192.168.0.100:8000/image/v2.jpeg'),
+    Reel(
+        id: '1',
+        viewsCount: '358K',
+        contentUrl: 'http://192.168.0.100:8000/image/v3.jpeg'),
+    Reel(
+        id: '1',
+        viewsCount: '240K',
+        contentUrl: 'http://192.168.0.100:8000/image/v4.jpeg'),
+    Reel(
+        id: '1',
+        viewsCount: '256K',
+        contentUrl: 'http://192.168.0.100:8000/image/v5.jpeg'),
+    Reel(
+        id: '1',
+        viewsCount: '220K',
+        contentUrl: 'http://192.168.0.100:8000/image/v6.jpeg'),
+    Reel(
+        id: '1',
+        viewsCount: '358K',
+        contentUrl: 'http://192.168.0.100:8000/image/v7.jpeg'),
+    Reel(
+        id: '1',
+        viewsCount: '240K',
+        contentUrl: 'http://192.168.0.100:8000/image/v8.jpeg'),
+  ];
+
+  List<Video> videos = [
+    Video(
+        id: '1',
+        viewsCount: '256K',
+        contentUrl: 'http://192.168.0.100:8000/image/v1.jpeg'),
+    Video(
+        id: '1',
+        viewsCount: '220K',
+        contentUrl: 'http://192.168.0.100:8000/image/v2.jpeg'),
+    Video(
+        id: '1',
+        viewsCount: '358K',
+        contentUrl: 'http://192.168.0.100:8000/image/v3.jpeg'),
+    Video(
+        id: '1',
+        viewsCount: '240K',
+        contentUrl: 'http://192.168.0.100:8000/image/v4.jpeg'),
+    Video(
+        id: '1',
+        viewsCount: '256K',
+        contentUrl: 'http://192.168.0.100:8000/image/v5.jpeg'),
+    Video(
+        id: '1',
+        viewsCount: '220K',
+        contentUrl: 'http://192.168.0.100:8000/image/v6.jpeg'),
+    Video(
+        id: '1',
+        viewsCount: '358K',
+        contentUrl: 'http://192.168.0.100:8000/image/v7.jpeg'),
+    Video(
+        id: '1',
+        viewsCount: '240K',
+        contentUrl: 'http://192.168.0.100:8000/image/v8.jpeg'),
+  ];
 
   @override
   void onInit() {
@@ -46,13 +168,19 @@ class ProfileScreenController extends GetxController
       update();
     });
     tabController = TabController(vsync: this, length: 4);
-    selectedTabText = const TabText(lable: 'Photos', position: 0);
+    selectedTabText =
+        const TabText(lable: 'Photos', position: 0, type: TabType.photos);
     tabsText = const [
-      TabText(lable: 'Photos', position: 0),
-      TabText(lable: 'Reels', position: 1),
-      TabText(lable: 'Videos', position: 2),
-      TabText(lable: 'Tags', position: 3)
+      TabText(lable: 'Photos', position: 0, type: TabType.photos),
+      TabText(lable: 'Reels', position: 1, type: TabType.reels),
+      TabText(lable: 'Videos', position: 2, type: TabType.videos),
+      TabText(lable: 'Tags', position: 3, type: TabType.tags)
     ];
+
+    profileContentheight = 269.h + 11.h;
+    profileContentheight += (profileImages.length / 3).ceil() * (128.h + 11.h);
+    AppLogger.printLog(
+        'calc is ${(profileImages.length / 3).ceil() * (128.h + 11.h)}');
 
     update();
   }
@@ -62,13 +190,4 @@ class ProfileScreenController extends GetxController
     scrollController.dispose();
     super.onClose();
   }
-}
-
-class TabText extends Equatable {
-  final String lable;
-  final int position;
-  const TabText({required this.lable, required this.position});
-
-  @override
-  List<Object?> get props => [lable, position];
 }

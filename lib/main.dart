@@ -25,7 +25,7 @@ void main() async {
   } else if (kProfileMode) {
     Global.baseurl = "https://reqres.in/";
   } else {
-    Global.baseurl = "http://192.168.0.102:3000";
+    Global.baseurl = "http://192.168.0.100:3000";
   }
   Wakelock.enable();
   runApp(const MyApp());
