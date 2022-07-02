@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-import '../controllers/theme/theme_service.dart';
+import '../services/theme/theme_service.dart';
 import 'constants.dart';
 import 'preference.dart';
 
 class UtilFunctions {
-  //? functions for e.g. parsing date and etc.
-
   //* function for displaying toast messages
   static void showToast({required String message}) {
     Fluttertoast.showToast(
@@ -20,9 +18,7 @@ class UtilFunctions {
   }
 
   static String dateParse(DateTime date) {
-    //TODO: change date parsing format
     return DateFormat.yMMMMd('en_US').format(date);
-    // return DateFormat('yyyy-MM-dd hh:mm:ss').format(date);
   }
 
   //* function to change theme

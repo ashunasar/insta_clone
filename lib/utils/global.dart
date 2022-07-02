@@ -3,20 +3,16 @@ import 'package:flutter/material.dart';
 class Global {
   //! Gloal values used in application
 
-  static String baseurl = "";
+  static String host = "";
   //TODO: change app name
 
-  static String appName = "App Name";
+  static String appName = "Insta Clone";
 
   //TODO: change app tag line
 
-  static String tagLine = "tag line";
-
-  //TODO: change figma file screen size
+  static String tagLine = "Match your vibe";
 
   static Size designSize = const Size(428, 926);
-
-  //TODO: change app logo path
 
   static String appLogoPath = 'assets/images/logo.png';
 

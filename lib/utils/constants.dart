@@ -6,4 +6,5 @@ class Constants {
   static const String isDarkMode = 'isDarkMode';
   static const String localeLang = 'locale_lang';
   static const String countryCode = 'country_code';
+  static const String refreshTokenEndPoint = '';
 }
