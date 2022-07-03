@@ -30,7 +30,7 @@ class ProfileScreenController extends GetxController
     if (e.type == TabType.photos) {
       profileContentheight = 269.h + 11.h;
       profileContentheight +=
-          (profileImages.length / 3).ceil() * (128.h + 11.h);
+          (profileImages.skip(3).length / 3).ceil() * (128.h + 11.h);
     }
     if (e.type == TabType.reels) {
       profileContentheight = (reals.length / 2).ceil() * (270.h + 20.h);
@@ -53,12 +53,10 @@ class ProfileScreenController extends GetxController
   double whiteBgPositionFromTop = 356.h;
   bool showAppbar = false;
 
-  List<String> profileImagesImp = [
+  List<String> profileImages = [
     'http://192.168.0.100:8000/image/v1.jpeg',
     'http://192.168.0.100:8000/image/v2.jpeg',
-    'http://192.168.0.100:8000/image/v3.jpeg'
-  ];
-  List<String> profileImages = [
+    'http://192.168.0.100:8000/image/v3.jpeg',
     'http://192.168.0.100:8000/image/v4.jpeg',
     'http://192.168.0.100:8000/image/v5.jpeg',
     'http://192.168.0.100:8000/image/v6.jpeg',
@@ -76,7 +74,7 @@ class ProfileScreenController extends GetxController
     'http://192.168.0.100:8000/image/v6.jpeg',
     'http://192.168.0.100:8000/image/v7.jpeg',
     'http://192.168.0.100:8000/image/v8.jpeg',
-    'http://192.168.0.100:8000/image/v9.jpeg',
+    'http://192.168.0.100:8000/image/v9.jpeg'
   ];
 
   List<Reel> reals = [
@@ -177,7 +175,8 @@ class ProfileScreenController extends GetxController
     ];
 
     profileContentheight = 269.h + 11.h;
-    profileContentheight += (profileImages.length / 3).ceil() * (128.h + 11.h);
+    profileContentheight +=
+        (profileImages.skip(3).length / 3).ceil() * (128.h + 11.h);
     AppLogger.printLog(
         'calc is ${(profileImages.length / 3).ceil() * (128.h + 11.h)}');
 

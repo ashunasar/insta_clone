@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-// ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +5,7 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:collection/collection.dart';
+import 'package:insta_clone/modules/profile/models/teb_text.dart';
 import '../../gen/assets.gen.dart';
 import 'controller/profile_screen_controller.dart';
 import 'post_list_view/post_list_view.dart';
@@ -85,15 +84,16 @@ class ProfileScreen extends StatelessWidget {
                                   clipBehavior: Clip.antiAlias,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50.r),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           image: Svg(
                                               'assets/icons/story_border.svg'))),
                                   padding: EdgeInsets.symmetric(
                                       vertical: 4.h, horizontal: 7.w),
                                   child: CircleAvatar(
                                       radius: 46.r,
-                                      backgroundImage: CachedNetworkImageProvider(
-                                          'http://192.168.0.100:8000/image/profile_pic_v.jpeg'))),
+                                      backgroundImage:
+                                          const CachedNetworkImageProvider(
+                                              'http://192.168.0.100:8000/image/profile_pic_v.jpeg'))),
                               Container(
                                   width: 164.w,
                                   padding: EdgeInsets.only(top: 24.h),
@@ -108,7 +108,7 @@ class ProfileScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 32.h),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
+                        children: const [
                           TextCountWidget(count: '76', title: 'Posts'),
                           TextCountWidget(count: '1.2K', title: 'Followers'),
                           TextCountWidget(count: '38', title: 'Following'),
@@ -136,16 +136,16 @@ class ProfileScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Assets.icons.addStoryWithoutGradientBg.svg(),
-                            HighlightWidget(
+                            const HighlightWidget(
                                 imagePath:
                                     'http://192.168.0.100:8000/image/highlight1.jpeg'),
-                            HighlightWidget(
+                            const HighlightWidget(
                                 imagePath:
                                     'http://192.168.0.100:8000/image/highlight2.jpeg'),
-                            HighlightWidget(
+                            const HighlightWidget(
                                 imagePath:
                                     'http://192.168.0.100:8000/image/highlight3.jpeg'),
-                            HighlightWidget(
+                            const HighlightWidget(
                                 imagePath:
                                     'http://192.168.0.100:8000/image/highlight4.jpeg'),
                           ]),
@@ -188,73 +188,54 @@ class ProfileScreen extends StatelessWidget {
                                                       .tabLabelGradient))
                                         ])
                                       : Text(e.lable,
-                                          style:
-                                              TextStyle(color: Colors.grey))));
+                                          style: const TextStyle(
+                                              color: Colors.grey))));
                         }).toList(),
                       ),
                     ),
                     SizedBox(
                       height: controller.profileContentheight,
                       child: PageView(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         controller: controller.pageController,
                         children: [
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(15.r),
-                                      child: CachedNetworkImage(
-                                        height: 269.h,
-                                        width: 269.w,
-                                        imageUrl:
-                                            'http://192.168.0.100:8000/image/v1.jpeg',
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Spacer(),
-                                    Column(children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(15.r),
-                                        child: CachedNetworkImage(
-                                          height: 128.h,
-                                          width: 128.w,
-                                          imageUrl:
-                                              'http://192.168.0.100:8000/image/v2.jpeg',
-                                          fit: BoxFit.cover,
+                            child: Visibility(
+                              visible: controller.selectedTabText.type ==
+                                  TabType.photos,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          Get.to(() =>
+                                              const PostListView(initPage: 0));
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(15.r),
+                                          child: CachedNetworkImage(
+                                            height: 269.h,
+                                            width: 269.w,
+                                            imageUrl:
+                                                controller.profileImages.first,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
-                                      SizedBox(height: 12.h),
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(15.r),
-                                        child: CachedNetworkImage(
-                                          height: 128.h,
-                                          width: 128.w,
-                                          imageUrl:
-                                              'http://192.168.0.100:8000/image/v3.jpeg',
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ]),
-                                  ],
-                                ),
-                                SizedBox(height: 11.h),
-                                Wrap(
-                                  spacing: 12.w,
-                                  runSpacing: 11.h,
-                                  children: controller.profileImages
-                                      .mapIndexed((i, e) => InkWell(
+                                      const Spacer(),
+                                      Column(children: [
+                                        if (controller.profileImages.length >=
+                                            2)
+                                          InkWell(
                                             onTap: () {
-                                              Get.to(() => PostListView(
-                                                    initPage: i,
-                                                  ));
+                                              Get.to(() => const PostListView(
+                                                  initPage: 1));
                                             },
                                             child: ClipRRect(
                                               borderRadius:
@@ -262,14 +243,61 @@ class ProfileScreen extends StatelessWidget {
                                               child: CachedNetworkImage(
                                                 height: 128.h,
                                                 width: 128.w,
-                                                imageUrl: e,
+                                                imageUrl:
+                                                    controller.profileImages[1],
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
-                                          ))
-                                      .toList(),
-                                ),
-                              ],
+                                          ),
+                                        SizedBox(height: 12.h),
+                                        if (controller.profileImages.length >=
+                                            3)
+                                          InkWell(
+                                            onTap: () {
+                                              Get.to(() => const PostListView(
+                                                  initPage: 2));
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.r),
+                                              child: CachedNetworkImage(
+                                                height: 128.h,
+                                                width: 128.w,
+                                                imageUrl:
+                                                    controller.profileImages[2],
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                      ]),
+                                    ],
+                                  ),
+                                  SizedBox(height: 11.h),
+                                  Wrap(
+                                    spacing: 12.w,
+                                    runSpacing: 11.h,
+                                    children: controller.profileImages
+                                        .skip(3)
+                                        .mapIndexed((i, e) => InkWell(
+                                              onTap: () {
+                                                Get.to(() => PostListView(
+                                                    initPage: i + 3));
+                                              },
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(15.r),
+                                                child: CachedNetworkImage(
+                                                  height: 128.h,
+                                                  width: 128.w,
+                                                  imageUrl: e,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ))
+                                        .toList(),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Container(
@@ -295,7 +323,7 @@ class ProfileScreen extends StatelessWidget {
                                               bottom: 10.h,
                                               child: Row(
                                                 children: [
-                                                  Icon(Icons.play_arrow,
+                                                  const Icon(Icons.play_arrow,
                                                       color: Colors.white),
                                                   SizedBox(width: 9.w),
                                                   Text(e.viewsCount)
@@ -329,7 +357,7 @@ class ProfileScreen extends StatelessWidget {
                                               bottom: 10.h,
                                               child: Row(
                                                 children: [
-                                                  Icon(Icons.play_arrow,
+                                                  const Icon(Icons.play_arrow,
                                                       color: Colors.white),
                                                   SizedBox(width: 9.w),
                                                   Text(e.viewsCount)
