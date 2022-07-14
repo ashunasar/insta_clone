@@ -34,6 +34,7 @@ dependencies:
   flutter_cache_manager: ^3.3.0
   wakelock: ^0.6.1+2
   scrollable_positioned_list: ^0.3.2
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:

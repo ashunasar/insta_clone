@@ -27,7 +27,7 @@ class PostAction extends StatelessWidget {
       case PostActionIcon.share:
         return Assets.icons.shareIcon.svg(height: 24.h, width: 24.w);
       case PostActionIcon.heartGradient:
-        return Assets.icons.hearIconGradient.svg(height: 18.h, width: 20.w);
+        return Assets.icons.heartIconGradient.svg(height: 18.h, width: 20.w);
 
       case PostActionIcon.commentGradient:
         return Assets.icons.heartIcon.svg(height: 18.h, width: 20.w);

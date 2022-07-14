@@ -49,43 +49,98 @@ class PostWidget extends StatelessWidget {
                   Get.bottomSheet(
                       ShareBottomSheet(postController: postController));
                 },
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 510.h,
-                      width: 380.w,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30.h),
+                child: Container(
+                  height: 597.h,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30.h),
+                  ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 510.h,
+                        width: 380.w,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30.h),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        child: CachedNetworkImage(
+                          imageUrl: postController.post.pImage,
+                          fit: BoxFit.cover,
+                          placeholder: (BuildContext contexdt, String s) =>
+                              Center(child: CircularProgressIndicator()),
+                        ),
                       ),
-                      clipBehavior: Clip.antiAlias,
-                      child: CachedNetworkImage(
-                        imageUrl: postController.post.pImage,
-                        fit: BoxFit.cover,
-                        placeholder: (BuildContext contexdt, String s) =>
-                            Center(child: CircularProgressIndicator()),
-                      ),
-                    ),
-                    Positioned(
-                        left: 137.w,
-                        top: 209.h,
-                        child: Opacity(
-                          opacity: postController.heartAnimating ? 1 : 0,
-                          child: AnimatedScale(
-                            duration: const Duration(milliseconds: 150),
-                            scale: postController.postLiking ? 1 : 0.6,
-                            onEnd: () {
-                              postController.postDislikingAction();
-                            },
-                            child: Assets.icons.hearIconGradient.svg(
-                              width: 106.w,
-                              height: 91.h,
+                      Positioned(
+                          left: 137.w,
+                          top: 209.h,
+                          child: Opacity(
+                            opacity: postController.heartAnimating ? 1 : 0,
+                            child: AnimatedScale(
+                              duration: const Duration(milliseconds: 150),
+                              scale: postController.postLiking ? 1 : 0.6,
+                              onEnd: () {
+                                postController.postDislikingAction();
+                              },
+                              child: Assets.icons.heartIconGradient.svg(
+                                width: 106.w,
+                                height: 91.h,
+                              ),
                             ),
-                          ),
-                        )),
-                    getPostAction(postController),
-                    getPostCaption(postController),
-                  ],
+                          )),
+                      getPostAction(postController),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: SizedBox(
+                            width: 380.w,
+                            height: 597.h - 510.h,
+                            child: Row(children: [
+                              Container(
+                                  margin:
+                                      EdgeInsets.only(left: 18.w, right: 15.w),
+                                  height: 45.h,
+                                  width: 45.w,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(25.r)),
+                                  child: CachedNetworkImage(
+                                      fit: BoxFit.cover,
+                                      imageUrl:
+                                          postController.post.profilePic)),
+                              Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(postController.post.userFullName,
+                                        style: GoogleFonts.oleoScriptSwashCaps(
+                                            fontSize: 16.sp)),
+                                    Text(postController.post.postedDate,
+                                        style: GoogleFonts.lexend(
+                                            fontSize: 12.sp,
+                                            color: Color(0xff969696))),
+                                  ]),
+                              Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  postController.showPostDetails();
+                                },
+                                child: Container(
+                                  height: 40.h,
+                                  width: 40.w,
+                                  color: Colors.transparent,
+                                  margin: EdgeInsets.only(right: 15.w),
+                                  child: Center(
+                                    child: Assets.icons.moreDetails.svg(),
+                                  ),
+                                ),
+                              )
+                            ])),
+                      )
+                    ],
+                  ),
                 ),
               ),
             );

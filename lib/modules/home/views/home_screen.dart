@@ -73,14 +73,15 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId1',
-                          pImage: 'http://192.168.0.100:8000/image/post.jpeg',
+                          pImage: 'http://192.168.0.101:8000/image/post.jpeg',
                           profilePic:
-                              'http://192.168.0.100:8000/image/post.jpeg',
+                              'http://192.168.0.101:8000/image/post.jpeg',
                           userFullName: 'Jenny Wilson',
                           avatar:
                               'assets/images/man working on laptop and talking on the phone.png',
                           pCaption:
-                              'Life is like a mirror, we get the best results when we smile.',
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..',
+                          postedDate: 'Yesterday',
                           comments: [
                             Comment(
                               cId: 'CommentId1',
@@ -128,85 +129,91 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId2',
-                          pImage: 'http://192.168.0.100:8000/image/post1.jpeg',
+                          pImage: 'http://192.168.0.101:8000/image/post1.jpeg',
                           profilePic:
-                              'http://192.168.0.100:8000/image/post1.jpeg',
+                              'http://192.168.0.101:8000/image/post1.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
                               'Life is like a mirror, we get the best results when we smile.',
                           comments: [],
                           bgColor: const Color.fromRGBO(24, 45, 53, 1),
+                          postedDate: 'Yesterday',
                         ),
                       ),
                       PostWidget(
                         post: Post(
                           pId: 'postId3',
-                          pImage: 'http://192.168.0.100:8000/image/post2.jpeg',
+                          pImage: 'http://192.168.0.101:8000/image/post2.jpeg',
                           profilePic:
-                              'http://192.168.0.100:8000/image/post2.jpeg',
+                              'http://192.168.0.101:8000/image/post2.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
                               'Life is like a mirror, we get the best results when we smile.',
                           comments: [],
                           bgColor: const Color.fromRGBO(5, 9, 15, 1),
+                          postedDate: 'Yesterday',
                         ),
                       ),
                       PostWidget(
                         post: Post(
                           pId: 'postId4',
-                          pImage: 'http://192.168.0.100:8000/image/post3.jpeg',
+                          pImage: 'http://192.168.0.101:8000/image/post3.jpeg',
                           profilePic:
-                              'http://192.168.0.100:8000/image/post3.jpeg',
+                              'http://192.168.0.101:8000/image/post3.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
                               'Life is like a mirror, we get the best results when we smile.',
                           comments: [],
                           bgColor: const Color.fromRGBO(49, 52, 66, 1),
+                          postedDate: 'Yesterday',
                         ),
                       ),
                       PostWidget(
                         post: Post(
                           pId: 'postId5',
-                          pImage: 'http://192.168.0.100:8000/image/post4.jpeg',
+                          pImage: 'http://192.168.0.101:8000/image/post4.jpeg',
                           profilePic:
-                              'http://192.168.0.100:8000/image/post4.jpeg',
+                              'http://192.168.0.101:8000/image/post4.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
                               'Life is like a mirror, we get the best results when we smile.',
                           comments: [],
                           bgColor: const Color.fromRGBO(207, 188, 151, 1),
+                          postedDate: 'Yesterday',
                         ),
                       ),
                       PostWidget(
                         post: Post(
                           pId: 'postId6',
-                          pImage: 'http://192.168.0.100:8000/image/post5.jpeg',
+                          pImage: 'http://192.168.0.101:8000/image/post5.jpeg',
                           profilePic:
-                              'http://192.168.0.100:8000/image/post5.jpeg',
+                              'http://192.168.0.101:8000/image/post5.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
                               'Life is like a mirror, we get the best results when we smile.',
                           comments: [],
                           bgColor: const Color.fromRGBO(71, 63, 48, 1),
+                          postedDate: 'Yesterday',
                         ),
                       ),
                       PostWidget(
                         post: Post(
                           pId: 'postId7',
-                          pImage: 'http://192.168.0.100:8000/image/post6.jpeg',
+                          pImage: 'http://192.168.0.101:8000/image/post6.jpeg',
                           profilePic:
-                              'http://192.168.0.100:8000/image/post6.jpeg',
+                              'http://192.168.0.101:8000/image/post6.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
                               'Life is like a mirror, we get the best results when we smile.',
                           comments: [],
                           bgColor: const Color.fromRGBO(58, 67, 37, 1),
+                          postedDate: 'Yesterday',
                         ),
                       ),
                     ],
