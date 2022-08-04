@@ -73,9 +73,10 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId1',
-                          pImage: 'http://192.168.0.101:8000/image/post.jpeg',
+                          pImage:
+                              'http://192.168.29.149:8000/image/posts/post.jpeg',
                           profilePic:
-                              'http://192.168.0.101:8000/image/post.jpeg',
+                              'http://192.168.29.149:8000/image/posts/post.jpeg',
                           userFullName: 'Jenny Wilson',
                           avatar:
                               'assets/images/man working on laptop and talking on the phone.png',
@@ -129,9 +130,10 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId2',
-                          pImage: 'http://192.168.0.101:8000/image/post1.jpeg',
+                          pImage:
+                              'http://192.168.29.149:8000/image/posts/post1.jpeg',
                           profilePic:
-                              'http://192.168.0.101:8000/image/post1.jpeg',
+                              'http://192.168.29.149:8000/image/posts/post1.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
@@ -144,9 +146,10 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId3',
-                          pImage: 'http://192.168.0.101:8000/image/post2.jpeg',
+                          pImage:
+                              'http://192.168.29.149:8000/image/posts/post2.jpeg',
                           profilePic:
-                              'http://192.168.0.101:8000/image/post2.jpeg',
+                              'http://192.168.29.149:8000/image/posts/post2.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
@@ -159,9 +162,10 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId4',
-                          pImage: 'http://192.168.0.101:8000/image/post3.jpeg',
+                          pImage:
+                              'http://192.168.29.149:8000/image/posts/post3.jpeg',
                           profilePic:
-                              'http://192.168.0.101:8000/image/post3.jpeg',
+                              'http://192.168.29.149:8000/image/posts/post3.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
@@ -174,9 +178,10 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId5',
-                          pImage: 'http://192.168.0.101:8000/image/post4.jpeg',
+                          pImage:
+                              'http://192.168.29.149:8000/image/posts/post4.jpeg',
                           profilePic:
-                              'http://192.168.0.101:8000/image/post4.jpeg',
+                              'http://192.168.29.149:8000/image/posts/post4.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
@@ -189,9 +194,10 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId6',
-                          pImage: 'http://192.168.0.101:8000/image/post5.jpeg',
+                          pImage:
+                              'http://192.168.29.149:8000/image/posts/post5.jpeg',
                           profilePic:
-                              'http://192.168.0.101:8000/image/post5.jpeg',
+                              'http://192.168.29.149:8000/image/posts/post5.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:
@@ -204,9 +210,10 @@ class HomeScreen extends StatelessWidget {
                       PostWidget(
                         post: Post(
                           pId: 'postId7',
-                          pImage: 'http://192.168.0.101:8000/image/post6.jpeg',
+                          pImage:
+                              'http://192.168.29.149:8000/image/posts/post6.jpeg',
                           profilePic:
-                              'http://192.168.0.101:8000/image/post6.jpeg',
+                              'http://192.168.29.149:8000/image/posts/post6.jpeg',
                           userFullName: 'Emmily Griffin',
                           avatar: 'assets/images/girl with a book.png',
                           pCaption:

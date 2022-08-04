@@ -4,11 +4,9 @@ import '../../../services/api/api_service.dart';
 class HomeService {
   //* initilizing dio with api service client
 
-  Dio? dio = ApiService('/api').getClient();
+  Dio? dio = ApiService('/home').getClient();
 
   Future userData() async {
-    return await dio!.get(
-      '/api/users?page=2',
-    );
+    return await dio!.get('timelineposts');
   }
 }
