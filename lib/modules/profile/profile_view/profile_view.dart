@@ -85,26 +85,28 @@ class ProfileView extends StatelessWidget {
                           style: GoogleFonts.nunito(
                               textStyle: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20.sp)))
+                                  fontSize: 20.sp,
+                                  color: Colors.white)))
                     ]),
                     Text(
                       'Kim Taehyung',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 56.sp,
-                      ),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 56.sp,
+                          color: Colors.white),
                     ),
                     SizedBox(height: 21.h),
                     Text(
                         'Singer | Model | Actor \nHomesexual 🏳️‍🌈\nCoffee sucks \nEveryone, jiminie pabo \nBts Army 💜',
-                        style: TextStyle(fontSize: 20.sp)),
+                        style: TextStyle(fontSize: 20.sp, color: Colors.white)),
                     SizedBox(height: 10.w),
                     Row(children: [
                       const Icon(Icons.location_on, color: Colors.white),
                       Text(
                         'Daegu,South Korea',
                         style: GoogleFonts.teko(
-                            textStyle: TextStyle(fontSize: 20.sp)),
+                            textStyle: TextStyle(
+                                fontSize: 20.sp, color: Colors.white)),
                       )
                     ]),
                   ],
