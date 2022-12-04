@@ -54,97 +54,97 @@ class ProfileScreenController extends GetxController
   bool showAppbar = false;
 
   List<String> profileImages = [
-    'http://192.168.0.101:8000/image/v1.jpeg',
-    'http://192.168.0.101:8000/image/v2.jpeg',
-    'http://192.168.0.101:8000/image/v3.jpeg',
-    'http://192.168.0.101:8000/image/v4.jpeg',
-    'http://192.168.0.101:8000/image/v5.jpeg',
-    'http://192.168.0.101:8000/image/v6.jpeg',
-    'http://192.168.0.101:8000/image/v7.jpeg',
-    'http://192.168.0.101:8000/image/v8.jpeg',
-    'http://192.168.0.101:8000/image/v9.jpeg',
+    'http://192.168.29.149:8000/image/v1.jpeg',
+    'http://192.168.29.149:8000/image/v2.jpeg',
+    'http://192.168.29.149:8000/image/v3.jpeg',
+    'http://192.168.29.149:8000/image/v4.jpeg',
+    'http://192.168.29.149:8000/image/v5.jpeg',
+    'http://192.168.29.149:8000/image/v6.jpeg',
+    'http://192.168.29.149:8000/image/v7.jpeg',
+    'http://192.168.29.149:8000/image/v8.jpeg',
+    'http://192.168.29.149:8000/image/v9.jpeg',
   ];
 
   List<String> tags = [
-    'http://192.168.0.101:8000/image/v1.jpeg',
-    'http://192.168.0.101:8000/image/v2.jpeg',
-    'http://192.168.0.101:8000/image/v3.jpeg',
-    'http://192.168.0.101:8000/image/v4.jpeg',
-    'http://192.168.0.101:8000/image/v5.jpeg',
-    'http://192.168.0.101:8000/image/v6.jpeg',
-    'http://192.168.0.101:8000/image/v7.jpeg',
-    'http://192.168.0.101:8000/image/v8.jpeg',
-    'http://192.168.0.101:8000/image/v9.jpeg'
+    'http://192.168.29.149:8000/image/v1.jpeg',
+    'http://192.168.29.149:8000/image/v2.jpeg',
+    'http://192.168.29.149:8000/image/v3.jpeg',
+    'http://192.168.29.149:8000/image/v4.jpeg',
+    'http://192.168.29.149:8000/image/v5.jpeg',
+    'http://192.168.29.149:8000/image/v6.jpeg',
+    'http://192.168.29.149:8000/image/v7.jpeg',
+    'http://192.168.29.149:8000/image/v8.jpeg',
+    'http://192.168.29.149:8000/image/v9.jpeg'
   ];
 
   List<Reel> reals = [
     Reel(
         id: '1',
         viewsCount: '256K',
-        contentUrl: 'http://192.168.0.101:8000/image/v1.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v1.jpeg'),
     Reel(
         id: '1',
         viewsCount: '220K',
-        contentUrl: 'http://192.168.0.101:8000/image/v2.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v2.jpeg'),
     Reel(
         id: '1',
         viewsCount: '358K',
-        contentUrl: 'http://192.168.0.101:8000/image/v3.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v3.jpeg'),
     Reel(
         id: '1',
         viewsCount: '240K',
-        contentUrl: 'http://192.168.0.101:8000/image/v4.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v4.jpeg'),
     Reel(
         id: '1',
         viewsCount: '256K',
-        contentUrl: 'http://192.168.0.101:8000/image/v5.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v5.jpeg'),
     Reel(
         id: '1',
         viewsCount: '220K',
-        contentUrl: 'http://192.168.0.101:8000/image/v6.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v6.jpeg'),
     Reel(
         id: '1',
         viewsCount: '358K',
-        contentUrl: 'http://192.168.0.101:8000/image/v7.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v7.jpeg'),
     Reel(
         id: '1',
         viewsCount: '240K',
-        contentUrl: 'http://192.168.0.101:8000/image/v8.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v8.jpeg'),
   ];
 
   List<Video> videos = [
     Video(
         id: '1',
         viewsCount: '256K',
-        contentUrl: 'http://192.168.0.101:8000/image/v1.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v1.jpeg'),
     Video(
         id: '1',
         viewsCount: '220K',
-        contentUrl: 'http://192.168.0.101:8000/image/v2.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v2.jpeg'),
     Video(
         id: '1',
         viewsCount: '358K',
-        contentUrl: 'http://192.168.0.101:8000/image/v3.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v3.jpeg'),
     Video(
         id: '1',
         viewsCount: '240K',
-        contentUrl: 'http://192.168.0.101:8000/image/v4.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v4.jpeg'),
     Video(
         id: '1',
         viewsCount: '256K',
-        contentUrl: 'http://192.168.0.101:8000/image/v5.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v5.jpeg'),
     Video(
         id: '1',
         viewsCount: '220K',
-        contentUrl: 'http://192.168.0.101:8000/image/v6.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v6.jpeg'),
     Video(
         id: '1',
         viewsCount: '358K',
-        contentUrl: 'http://192.168.0.101:8000/image/v7.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v7.jpeg'),
     Video(
         id: '1',
         viewsCount: '240K',
-        contentUrl: 'http://192.168.0.101:8000/image/v8.jpeg'),
+        contentUrl: 'http://192.168.29.149:8000/image/v8.jpeg'),
   ];
 
   @override
