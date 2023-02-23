@@ -31,7 +31,8 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CachedNetworkImage(
-                      imageUrl: 'http://192.168.0.101:8000/image/v_cover.png',
+                      imageUrl:
+                          'https://images-serve.onrender.com/image/v_cover.png',
                       fit: BoxFit.cover,
                       width: width,
                       height: 369.23.h,
@@ -93,7 +94,7 @@ class ProfileScreen extends StatelessWidget {
                                       radius: 46.r,
                                       backgroundImage:
                                           const CachedNetworkImageProvider(
-                                              'http://192.168.0.101:8000/image/profile_pic_v.jpeg'))),
+                                              'https://images-serve.onrender.com/image/profile_pic_v.jpeg'))),
                               Container(
                                   width: 164.w,
                                   padding: EdgeInsets.only(top: 24.h),
@@ -138,16 +139,16 @@ class ProfileScreen extends StatelessWidget {
                             Assets.icons.addStoryWithoutGradientBg.svg(),
                             const HighlightWidget(
                                 imagePath:
-                                    'http://192.168.0.101:8000/image/highlight/highlight1.jpeg'),
+                                    'https://images-serve.onrender.com/image/highlight/highlight1.jpeg'),
                             const HighlightWidget(
                                 imagePath:
-                                    'http://192.168.0.101:8000/image/highlight/highlight2.jpeg'),
+                                    'https://images-serve.onrender.com/image/highlight/highlight2.jpeg'),
                             const HighlightWidget(
                                 imagePath:
-                                    'http://192.168.0.101:8000/image/highlight/highlight3.jpeg'),
+                                    'https://images-serve.onrender.com/image/highlight/highlight3.jpeg'),
                             const HighlightWidget(
                                 imagePath:
-                                    'http://192.168.0.101:8000/image/highlight/highlight4.jpeg'),
+                                    'https://images-serve.onrender.com/image/highlight/highlight4.jpeg'),
                           ]),
                     ),
                     Padding(
