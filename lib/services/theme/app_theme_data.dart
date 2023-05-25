@@ -50,8 +50,8 @@ class AppThemeData {
       labelSmall: GoogleFonts.openSans(
           fontSize: 10.sp, fontWeight: FontWeight.w400, letterSpacing: 1.5),
     ),
-    colorScheme:
-        ColorScheme.fromSwatch().copyWith(secondary: const Color(0xff6B5ECD)),
+    // colorScheme:
+    //     ColorScheme.fromSwatch().copyWith(secondary: const Color(0xff6B5ECD)),
     // colorScheme: const ColorScheme(background: Color(0xffFFFFFF)),
   );
 
