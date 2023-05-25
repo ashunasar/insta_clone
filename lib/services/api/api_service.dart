@@ -87,9 +87,9 @@ class ApiService {
   ApiService(String baseUrl) {
     final options = BaseOptions(
       baseUrl: '${Global.host}$baseUrl',
-      connectTimeout: 90000,
-      receiveTimeout: 90000,
-      sendTimeout: 90000,
+      connectTimeout: const Duration(milliseconds: 90000),
+      receiveTimeout: const Duration(milliseconds: 90000),
+      sendTimeout: const Duration(milliseconds: 90000),
     );
     //* initializing dio with options
     _dio = Dio(options);
@@ -127,7 +127,7 @@ class ApiService {
       late String message;
 
       message = "";
-      if (dioError.type == DioErrorType.response) {
+      if (dioError.type == DioErrorType.badResponse) {
         final data = dioError.response!.data;
         AppLogger.printLog(data);
 
@@ -189,7 +189,7 @@ class ApiService {
         } else {
           message = "Something went wrong";
         }
-      } else if (dioError.type == DioErrorType.connectTimeout) {
+      } else if (dioError.type == DioErrorType.connectionTimeout) {
         message = "connection timedout";
       } else if (dioError.error is SocketException) {
         message = "Please check your internet connection";
