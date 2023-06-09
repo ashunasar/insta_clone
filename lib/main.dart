@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         fallbackLocale: Global.fallbackLocale,
         debugShowCheckedModeBanner: false,
         title: Global.appName,
-        theme: AppThemeData.lightTheme,
+        // theme: AppThemeData.lightTheme,
         // darkTheme: AppThemeData.darkTheme,
         themeMode: ThemeService().getThemeMode(),
         home: InternetConnectionChecker(child: SplashScreen()),

@@ -6,7 +6,7 @@ class Preference {
   static final Map<String, dynamic> _memoryPrefs = <String, dynamic>{};
 
   static Future<SharedPreferences?> load() async {
-    _prefs ??= await SharedPreferences?.getInstance();
+    _prefs ??= await SharedPreferences.getInstance();
     return _prefs;
   }
 

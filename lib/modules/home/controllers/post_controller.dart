@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:readmore/readmore.dart';
 
-import '../../../gen/assets.gen.dart';
 import '../models/comment.dart';
 import '../models/post.dart';
 import '../models/post_actions.dart';
